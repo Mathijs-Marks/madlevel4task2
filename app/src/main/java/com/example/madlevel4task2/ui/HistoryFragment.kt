@@ -2,7 +2,10 @@ package com.example.madlevel4task2.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,10 +43,18 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.history_fragment_title)
+        (activity as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(
+            R.drawable.abc_vector_test
+        )
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         initViews()
 
         gamesRepository = GameRepository(requireContext())
         getGamesFromDatabase()
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -52,6 +63,12 @@ class HistoryFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            android.R.id.home -> {
+                // Return to the Game Fragment.
+                findNavController().popBackStack()
+                true
+            }
+
             R.id.action_delete_all -> {
                 // Clear the Game History list.
                 removeAllGames()

@@ -2,6 +2,7 @@ package com.example.madlevel4task2.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.madlevel4task2.R
@@ -36,6 +37,8 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         gamesRepository = GameRepository(requireContext())
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.game_fragment_title)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         initViews()
     }
