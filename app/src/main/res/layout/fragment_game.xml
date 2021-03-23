@@ -47,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvInstructions"
-        tools:src="@drawable/scissors" />
+        android:src="@drawable/scissors" />
 
     <ImageView
         android:id="@+id/ivPlayer"
@@ -59,7 +59,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvVersus"
         app:layout_constraintTop_toBottomOf="@+id/tvInstructions"
-        tools:src="@drawable/rock" />
+        android:src="@drawable/rock" />
 
     <TextView
         android:id="@+id/tvVersus"
